@@ -15,17 +15,16 @@
   boot.loader.grub.version = 2;
   boot.loader.grub.device = "/dev/sda";
 
+  # Networking
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  networking.nameservers = [ "10.0.1.175" "1.1.1.1" "8.8.8.8" ];
+  networking.useDHCP = false;
+  networking.interfaces.eth0.useDHCP = true;
+  networking.firewall.enable = true;
+  networking.firewall.allowedTCPPorts = [ 22 8080 ];
 
   # Set your time zone.
   time.timeZone = "America/Chicago";
-
-  # The global useDHCP flag is deprecated, therefore explicitly set to false here.
-  # Per-interface useDHCP will be mandatory in the future, so this generated config
-  # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.eth0.useDHCP = true;
 
   # Select internationalisation properties.
    i18n.defaultLocale = "en_US.UTF-8";
@@ -34,72 +33,71 @@
      keyMap = "us";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
 
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  # XFCE 
+  services.xserver = {
+    enable = true;
+    desktopManager = {
+      xterm.enable = false;
+      xfce.enable = true;
+    };
+  };
 
   # Hyper-V Options
-  boot.initrd.checkJournalingFS = false;
-  virtualisation.hypervGuest.enable = true;
-#  services = {
-#    virtualisation.hypervGuest.enable = true;
-#    virtualisation.hypervGuest.videoMode = "1920x1080";
-#vmwareGuest.enable = true;
-#  };
-  
+  virtualisation.hypervGuest.videoMode = "1280x720";
 
   # Configure keymap in X11
   services.xserver.layout = "us";
-  # services.xserver.xkbOptions = "eurosign:e";
 
   # Enable sound.
-  # sound.enable = true;
-  # hardware.pulseaudio.enable = true;
+  sound.enable = true;
+  hardware.pulseaudio.enable = true;
+
+  programs.zsh.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.dan = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  users.users = {
+    root = {
+      shell = pkgs.zsh;
+    };
+    dan = {
+      isNormalUser = true;
+      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      shell = pkgs.zsh;
+    };
   };
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
+  # Custom scripts
+  system.userActivationScripts = { 
+    dotfiles = {
+      text = ''
+          git clone https://github.com/sa7mon/dotfiles.git /home/dan/
+      '';
+      deps = [];
+    };
+  };
+
+  # Install packages
   environment.systemPackages = with pkgs; [
-#    open-vm-tools
-    wget
-    firefox
+	curl
+	firefox
+	git
+	htop
+	jq
+	ncdu
+	nmap
+	pigz
+	pv
+	(python39.withPackages (ps: with ps; [requests]))
+	sqlite
+	tmux
+	tree
+	wget
   ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 22 ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "21.05"; # Did you read the comment?
-
+  system.stateVersion = "21.05";
 }
 
