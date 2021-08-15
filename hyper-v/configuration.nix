@@ -44,7 +44,10 @@
   };
 
   # Hyper-V Options
-  virtualisation.hypervGuest.videoMode = "1280x720";
+  virtualisation.hypervGuest.videoMode = "1920x1080"; # TODO: Find out if this is doing anything
+  boot.loader.grub.extraConfig = ''
+    set video=hyperv_fb:1920x1080
+  '';
 
   # Configure keymap in X11
   services.xserver.layout = "us";
@@ -67,16 +70,6 @@
     };
   };
 
-  # Custom scripts
-  system.userActivationScripts = { 
-    dotfiles = {
-      text = ''
-          git clone https://github.com/sa7mon/dotfiles.git /home/dan/
-      '';
-      deps = [];
-    };
-  };
-
   # Install packages
   environment.systemPackages = with pkgs; [
 	curl
@@ -94,6 +87,17 @@
 	tree
 	wget
   ];
+
+  # Custom scripts 
+  system.activationScripts.dotfiles = ''
+      if [ ! -d "/home/dan/dotfiles" ]; then
+        mkdir -p /home/dan/dotfiles
+        /run/current-system/sw/bin/git clone https://github.com/sa7mon/dotfiles.git /home/dan/dotfiles
+        chown -R dan:users /home/dan/dotfiles
+        ln -s /home/dan/dotfiles/profiles/nixos_hyperv.zshrc /home/dan/.zshrc
+      fi 
+  '';
+
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
