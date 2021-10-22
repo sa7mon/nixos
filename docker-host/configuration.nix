@@ -47,14 +47,10 @@
     wget
   ];
 
+  # Programs/Services
   programs.zsh.enable = true;
-
-  # OpenSSH
   services.openssh.enable = true;
-  services.openssh.authorizedKeysFiles = [".ssh/authorized_keys"];
-
-  # Docker
-  #virtualisation.docker.enable = true;
+  virtualisation.docker.enable = true;
 
   system.stateVersion = "21.05";
 }
