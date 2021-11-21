@@ -27,12 +27,12 @@
 | VS Code          | ✅     |
 | VLC              | ✅     |
 | Virtualbox       | ✅     |
-| OpenOffice       |       |
+| Office suite     | libreoffice |
 | Syncthing        |       |
-| Dropbox          |       |
+| Dropbox          |manual install|
 | PyCharm          |       |
 | DataGrip         |       |
-| GoLand           |       |
+| GoLand           |manual install|
 | IRC client       |       |
 | MakeMKV          |       |
 | Insomnia?        |       |
@@ -42,4 +42,4 @@
 | WireGuard client |       |
 | Ultimaker Cura   |       |
 | Veracrypt        |Manual deb |
-| RDP Client       |       |
+| RDP Client       | xfreerdp |
