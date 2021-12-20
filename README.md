@@ -24,3 +24,16 @@ nano /mnt/etc/nixos/configuration.nix
 nixos-install
 reboot
 ```
+
+## Persistent Data Stuff
+
+
+https://old.reddit.com/r/NixOS/comments/g8c734/how_to_clone_a_repository_at_a_specific_location/
+
+https://github.com/yrashk/nix-home/blob/master/home.nix
+
+https://stackoverflow.com/questions/53658303/fetchfromgithub-filter-down-and-use-as-environment-etc-file-source
+
+https://www.reddit.com/r/NixOS/comments/emnc9d/your_home_in_nix_dotfile_management_with_home/
+
+https://www.reddit.com/r/NixOS/comments/fb1p1o/replacing_dotfiles_with_nix/
