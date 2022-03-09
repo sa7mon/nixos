@@ -35,7 +35,8 @@
       isNormalUser = true;
       extraGroups = [ "wheel" "docker" ]; # Enable ‘sudo’ for the user.
       shell = pkgs.zsh;
-      openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDbhzUxkKECvtEMh5R0BtW8iK7ln9b6j0VouSPsKu0cKqlNynCCxkecAj/ogmV+fP7pxb/YTsk/TGyc9tuXgz4SRWeTl+7FONipHxLy1ceUTq2dTHBKu70cl+R70wJ//vrELKvYiuW3rjHZHr5hzSB0pI37ugSu+jmQKiUq71PzGYbSmn7p886Ia0qltaRGvZAxOv3PugFHKSO99mJs3vs+6JUfKI7XV/MDHX5ziRXpXMFhdupUZtv4jFNpp4/Y6/+prUTjkNHIVgIkdnMmMhb8emA3EPdDkdpEOXypEJS1gpt9MpIiFPVh/SibPS2t4Etv3m0iJN24XMhjbOBj2gN9pIJEzf05aKZU4WPwHH9N3nStRy+YFCUr6P2IvQIur/eKLxxQgeCrNTl+EiCPC2xLeh4IBjuHX0Q+CNY522B+IDnIL1kxqLyfwfidC9yQko3yYc2QzvFp4ln+UVDtxT3O1z8KKtAXNG1XdFHBqsREESK2/VlkgwTrr4cmeXodxjnCbcvoriGKGUtB7Dia402FiYFGpmBnAqguH0tPOKf4NIdscI7rIEg0Lfv8WHOXhCxWlX0WrWLunFSfikYNdDd/1FzixYn29rtzIpg6BE6Y/fl/wdAFhgrQxqV/3rHDG+I5U2p/487wGIjq5l7NqFTRggmiLQK666GpVm7VZsq7QQ== dan.sa7mon@gmail.com" ];
+      openssh.authorizedKeys.keys = [ "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDbhzUxkKECvtEMh5R0BtW8iK7ln9b6j0VouSPsKu0cKqlNynCCxkecAj/ogmV+fP7pxb/YTsk/TGyc9tuXgz4SRWeTl+7FONipHxLy1ceUTq2dTHBKu70cl+R70wJ//vrELKvYiuW3rjHZHr5hzSB0pI37ugSu+jmQKiUq71PzGYbSmn7p886Ia0qltaRGvZAxOv3PugFHKSO99mJs3vs+6JUfKI7XV/MDHX5ziRXpXMFhdupUZtv4jFNpp4/Y6/+prUTjkNHIVgIkdnMmMhb8emA3EPdDkdpEOXypEJS1gpt9MpIiFPVh/SibPS2t4Etv3m0iJN24XMhjbOBj2gN9pIJEzf05aKZU4WPwHH9N3nStRy+YFCUr6P2IvQIur/eKLxxQgeCrNTl+EiCPC2xLeh4IBjuHX0Q+CNY522B+IDnIL1kxqLyfwfidC9yQko3yYc2QzvFp4ln+UVDtxT3O1z8KKtAXNG1XdFHBqsREESK2/VlkgwTrr4cmeXodxjnCbcvoriGKGUtB7Dia402FiYFGpmBnAqguH0tPOKf4NIdscI7rIEg0Lfv8WHOXhCxWlX0WrWLunFSfikYNdDd/1FzixYn29rtzIpg6BE6Y/fl/wdAFhgrQxqV/3rHDG+I5U2p/487wGIjq5l7NqFTRggmiLQK666GpVm7VZsq7QQ== dan.sa7mon@gmail.com",
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIP4bG614SG3LZnYFZbHUdSRrVEl169PYPQm7IHVxpGSZ dan@salmon.cat"];
     };
   };
 
